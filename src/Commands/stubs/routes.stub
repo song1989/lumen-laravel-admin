@@ -1,15 +1,10 @@
 <?php
 
-use Illuminate\Routing\Router;
-
 Admin::registerHelpersRoutes();
-
-Route::group([
+app()->group([
     'prefix'        => config('admin.prefix'),
     'namespace'     => Admin::controllerNamespace(),
-    'middleware'    => ['web', 'admin'],
-], function (Router $router) {
-
-    $router->get('/', 'HomeController@index');
-
+    //'middleware'    => ['web', 'admin'],
+], function ($app) {
+    $app->get('/', 'HomeController@index');
 });
